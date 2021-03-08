@@ -1,0 +1,162 @@
+.cart-hldr {
+  width: 95%;
+  display: table;
+  content: '';
+  padding: 20px;
+}
+.cart-items-hldr {
+  width: 60%;
+  display: inline-block;
+  float: left;
+  margin-right: 30px;
+}
+.order-summary {
+  width: 30%;
+  display: inline-block;
+  float: left;
+}
+.cart-item {
+  margin-bottom: 15px;
+  display: flex;
+}
+.qty-stepper-hldr {
+  width: 10rem;
+}
+.book-cover > img {
+  width: 80px;
+  cursor: pointer;
+}
+.book-detail {
+  // flex-grow: 10;
+  width: 30rem;
+  margin-left: 20px;
+}
+.card-header {
+  border-bottom: 1px solid #bdbdbd;
+}
+.order-summary mat-card,
+.cart-item {
+  background: #eeeeee;
+}
+.order-summary mat-card {
+  padding-bottom: 25px;
+}
+.order-summary td {
+  padding: 5px;
+}
+.order-summary table {
+  padding: 15px;
+}
+mat-card-content table {
+  width: 100%;
+}
+.checkout-btn {
+  color: white;
+  background-color: #e91e63;
+}
+.book-title {
+  font-weight: 500;
+  font-size: 18px;
+}
+.book-subtitle {
+  font-style: italic;
+  font-size: 14px;
+}
+.book-author {
+  font-size: 12px;
+  color: darkgray;
+  padding: 5px 0;
+}
+.qty-stepper {
+  display: flex;
+  margin-bottom: 20px;
+}
+.stepper-border {
+  border: 1px solid #bdbdbd;
+  cursor: pointer;
+}
+.qty-input {
+  width: 30px;
+}
+.qty-total {
+  font-size: 14px;
+  font-style: italic;
+}
+.qty-unit {
+  line-height: 1.9;
+  padding-left: 2px;
+  font-size: 12px;
+}
+.book-price {
+  padding: 3px;
+}
+
+.box_row{
+  display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-wrap: wrap;
+flex-wrap: wrap;
+}
+
+.box_column{
+  -webkit-box-flex: 0;
+-ms-flex: 0 0 65%;
+flex: 0 0 65%;
+max-width: 65%;
+position: relative;
+width: 100%;
+padding: 1rem;
+margin: 0 100px 10px 225px;
+}
+
+.box_column  h2{
+  font-size:24px;
+}
+
+
+.box_column .inner_box img{
+float: right;
+width: 104px;
+height: 53px;
+}
+.box_column .inner_box h2{
+  float: left;
+}
+
+.box_column .inner_box h5{
+  float: left;
+  width: 100%;
+  margin: 0px;
+}
+
+.box_column .inner_box h6{
+  float: left;
+  width: 100%;
+  margin: 4px 0;
+}
+
+.box_column .inner_box p{
+  float: left;
+margin-top: 10px;
+}
+
+.box_column .inner_box{
+  box-shadow: 0px 0px 16px 0px #756e6e70;
+  padding: 1rem;
+  min-height: 225px;
+  box-shadow: 0px 0px 16px 0px #756e6e70;
+  padding: 1rem;
+  height: 150px;
+}
+.btn-proceed{
+  float: left;
+  width: 100%;
+  margin-left: 240px;
+}
+.qty-item{
+  float: right;
+  position: absolute;
+  bottom: 25px;
+  right: 26px;
+}

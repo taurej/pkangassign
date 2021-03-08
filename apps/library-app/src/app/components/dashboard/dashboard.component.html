@@ -1,0 +1,37 @@
+<form class="search-bar-hldr">
+  <mat-form-field appearance="standard">
+    <mat-label>Search in Library</mat-label>
+    <input
+      name="search-input"
+      matInput
+      [(ngModel)]="searchString"
+      placeholder="Book name"
+    />
+  </mat-form-field>
+  <button
+    name="search-btn"
+    mat-icon-button
+    (click)="onSearchBooks(searchString)"
+  >
+    <mat-icon>search</mat-icon>
+  </button>
+</form>
+<div class="box_row">   
+  <div class="box_column" *ngFor="let book of books; let index = index">
+    <div class="inner_box" (click)="onBookDetails(book)">
+      <b>{{ book?.volumeInfo?.title }}</b>
+      <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
+      }} || ../../../assets/images/book-cover-not-available.jpg" alt="{{ book?.volumeInfo?.title }}">
+      <p>  Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.  </p>
+      <h5> <b> Written by:</b></h5>
+       <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
+    </div>
+  </div>
+</div>
+<div  class="empty-collection-hldr"  *ngIf="books.length == 0 && (booksFacade.searchString$ | async).length > 0">
+  <img src="../../../assets/images/No_results_found.png" />
+  <div>Books not found.</div>
+  <div class="message">
+    Continue search in Library
+  </div>
+</div>

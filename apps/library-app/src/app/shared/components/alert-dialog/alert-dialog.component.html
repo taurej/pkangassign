@@ -1,0 +1,17 @@
+<div mat-dialog-title>
+  <mat-icon
+    class="alert-title alert-icon"
+    aria-hidden="false"
+    aria-label="message type"
+    >error</mat-icon
+  >
+  <span class="alert-title">Alert</span>
+</div>
+<div mat-dialog-content>
+  <p>{{ data.message }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="ok-btn" [mat-dialog-close]="'OK'" cdkFocusInitial>
+    OK
+  </button>
+</div>

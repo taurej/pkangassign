@@ -1,0 +1,24 @@
+<div class="box_row">   
+  <div class="box_column">
+    <div class="inner_box">
+      <b>{{ book?.volumeInfo?.title }}</b>
+      <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
+      }} || ../../../assets/images/book-cover-not-available.jpg" alt="{{ book?.volumeInfo?.title }}"><br/>
+      <h6 *ngIf="book?.volumeInfo?.averageRating">Rating: <span><enlight-star-rating [rating]="book.volumeInfo.averageRating"></enlight-star-rating></span></h6>
+      <h6 *ngIf="book?.volumeInfo?.publisher">Publisher: <span>{{book?.volumeInfo?.publisher}}</span></h6>
+      <h6 *ngIf="book?.volumeInfo?.pageCount">Page Count: <span>{{book?.volumeInfo?.pageCount}}</span></h6>
+      <h6 *ngIf="book?.volumeInfo?.language">Language: <span>{{book?.volumeInfo?.language}}</span></h6>
+      <p *ngIf="book?.volumeInfo?.description">{{book?.volumeInfo?.description}}</p>
+      <h5> <b> Written by:</b></h5>
+       <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
+       <div class="button_bottom">
+         <button class="btn buynow" mat-button (click)="onBuyNow(book)">
+          Buy Now
+        </button>
+        <button class="btn addtocart" mat-button (click)="onAddToCart(book)">
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div> 
+</div>

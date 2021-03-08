@@ -1,0 +1,59 @@
+<mat-card class="billing-hldr">
+  <h3>Billing Details:</h3>
+  <form
+    class="billing-form"
+    name="billing-form"
+    #f="ngForm"
+    (ngSubmit)="f.form.valid && onBillingSubmit()"
+  >
+  
+      <mat-form-field appearance="fill" style="width: 100%;float: left;">       
+        <input
+          #firstName="ngModel"
+          name="fname"
+          maxlength="30"
+          matInput
+          placeholder="Your Name"
+          [(ngModel)]="billingDetails.fname"
+          required
+        />
+      </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%;float: left;">
+      <input
+        #email="ngModel"
+        email
+        name="email"
+        matInput
+        placeholder="Your Email"
+        [(ngModel)]="billingDetails.email"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%;float: left;">
+      <input
+        type="tel"
+        #mobile="ngModel"
+        name="mobile"
+        maxlength="10"
+        matInput
+        pattern="^\d*[0-9]\d*$"
+        placeholder="Your Phone number"
+        [(ngModel)]="billingDetails.mobile"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <textarea
+        #address="ngModel"
+        name="address"
+        maxlength="50"
+        matInput
+        placeholder="Your Address"
+        [(ngModel)]="billingDetails.address"
+        required
+      ></textarea>
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+</mat-card>

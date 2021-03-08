@@ -1,0 +1,39 @@
+
+<div class="box_row"  *ngIf="myBooksCollection.length > 0; else emptyCollection">   
+  <div class="box_column" *ngFor="let book of myBooksCollection; let index = index">
+    <div class="inner_box">
+      <b>{{ book?.volumeInfo?.title }}</b>
+      <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
+      }} || ../../../assets/images/book-cover-not-available.jpg" alt="{{ book?.volumeInfo?.title }}"><br/>
+      
+      <p>  Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.  </p>
+      <h5> <b> Written by:</b></h5>
+       <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
+    </div>
+  </div> 
+  <div class="billing-details">
+    <h5>Billing Address</h5>
+    <h5>Name: <span>{{billingDetails.fname}}</span></h5>
+    <h5>Email: <span>{{billingDetails.email}}</span></h5>
+    <h5>Phone: <span>{{billingDetails.mobile}}</span></h5>
+    <h5>Address: <span>{{billingDetails.address}}</span></h5>
+  </div>
+</div>
+<ng-template #emptyCollection>
+  <div class="empty-collection-hldr">
+    <img
+      (click)="goToDashboard()"
+      src="../../../assets/images/book_sans_add-512.png"
+    />
+    <div>Collection is Empty.</div>
+    <div class="message">
+      Click
+      <span
+        style="color: blue;text-decoration: underline;cursor: pointer;"
+        (click)="goToDashboard()"
+        >here</span
+      >
+      to continue shopping
+    </div>
+  </div>
+</ng-template>

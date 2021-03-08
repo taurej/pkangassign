@@ -1,0 +1,16 @@
+.empty-cart-hldr {
+  text-align: center;
+}
+.empty-cart-hldr img {
+  width: 200px;
+}
+.empty-cart-hldr div:nth-child(2) {
+  font-size: 40px;
+  font-weight: 500;
+  color: #616161;
+  margin-bottom: 5px;
+}
+.message {
+  font-size: 20px;
+  font-weight: 100;
+}
