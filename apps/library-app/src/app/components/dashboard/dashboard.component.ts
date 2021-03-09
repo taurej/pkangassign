@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
   onBookDetails(book) {
     this.sharedService.setBookDetail(book);
-    this.router.navigate(['/bookdetail']);
+    this.router.navigate(['/bookDetail']);
   }
   ngOnDestroy() {
     this.storeSubscription.unsubscribe();

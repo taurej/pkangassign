@@ -9,7 +9,7 @@ import { BooksFacade } from '../../store/app.facade';
   templateUrl: './mycollection.component.html',
   styleUrls: ['./mycollection.component.scss']
 })
-export class MycollectionComponent implements OnInit, OnDestroy {
+export class MyCollectionComponent implements OnInit, OnDestroy {
   myBooksCollection = [];
   billingDetails:any;
   storeSubscription: Subscription;
@@ -31,13 +31,12 @@ export class MycollectionComponent implements OnInit, OnDestroy {
     this.billingSubscription = this.booksFacade.billingDetails$.subscribe(
       collectionBilling => {        
         this.billingDetails = collectionBilling;
-        console.log(this.billingDetails)
       }
     );
   }
   onBookDetails(book) {
     this.sharedService.setBookDetail(book);
-    this.router.navigate(['/bookdetail']);
+    this.router.navigate(['/bookDetail']);
   }
   goToDashboard() {
     this.router.navigate(['dashboard']);

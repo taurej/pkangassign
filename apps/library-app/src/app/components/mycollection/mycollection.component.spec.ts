@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MycollectionComponent } from './mycollection.component';
+import { MyCollectionComponent } from './mycollection.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import {
@@ -15,14 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedService } from '../../shared/services/shared/shared.service';
 import * as fromApp from '../../store/app.reducer';
 
-describe('MycollectionComponent', () => {
-  let component: MycollectionComponent;
-  let fixture: ComponentFixture<MycollectionComponent>;
+describe('MyCollectionComponent', () => {
+  let component: MyCollectionComponent;
+  let fixture: ComponentFixture<MyCollectionComponent>;
   let service: SharedService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MycollectionComponent],
+      declarations: [MyCollectionComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
@@ -41,7 +41,7 @@ describe('MycollectionComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MycollectionComponent);
+    fixture = TestBed.createComponent(MyCollectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -62,7 +62,7 @@ describe('MycollectionComponent', () => {
     const spy = spyOn(router, 'navigate');
     component.onBookDetails(book);
     const bookData = service.getBookDetail();
-    expect(spy).toHaveBeenCalledWith(['/bookdetail']);
+    expect(spy).toHaveBeenCalledWith(['/bookDetail']);
     expect(bookData).toBe(book);
   });
 });

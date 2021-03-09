@@ -33,7 +33,7 @@
           >
         </p>
         <p class="link-outer">
-          <a mat-list-item routerLink="/mycollection" (click)="snav.toggle()"
+          <a mat-list-item routerLink="/myCollection" (click)="snav.toggle()"
             ><mat-icon
               matBadge="{{
                 (booksFacade.itemsCount$ | async)?.myCollectionCount || '0'

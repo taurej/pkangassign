@@ -17,7 +17,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { EmptyCartComponent } from './components/empty-cart/empty-cart.component';
 import { AlertDialogComponent } from './shared/components/alert-dialog/alert-dialog.component';
 import { CartComponent } from './components/cart/cart.component';
-import { MycollectionComponent } from './components/mycollection/mycollection.component';
+import { MyCollectionComponent } from './components/mycollection/mycollection.component';
 import { BillingComponent } from './components/billing/billing.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { RatingComponent } from './shared/components/rating/rating.component';
@@ -46,7 +46,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     DashboardComponent,
     SidenavComponent,
     CartComponent,
-    MycollectionComponent,
+    MyCollectionComponent,
     BillingComponent,
     BookDetailComponent,
     RatingComponent,

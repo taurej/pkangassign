@@ -67,7 +67,7 @@ describe('BillingComponent', () => {
     const router: Router = TestBed.inject(Router);
     const spy = spyOn(router, 'navigate');
     component.navToDashboard();
-    expect(spy).toHaveBeenCalledWith(['mycollection']);
+    expect(spy).toHaveBeenCalledWith(['myCollection']);
   });
   it('onBillingSubmit() should set billing details in store and clear all cart if come from cart page', async () => {
     booksFacade = TestBed.inject(BooksFacade);

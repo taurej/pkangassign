@@ -38,7 +38,7 @@ export class BillingComponent implements OnInit {
 
   onBillingSubmit() {
     if (this.checkout === 'true') {
-      this.booksFacade.removeAllCartItems(); //if checkout from cart page
+      this.booksFacade.removeAllCartItems();
     }
     this.booksFacade.addBillingDetailsToStore(this.billingDetails);
     this.sharedService.openAlertDialog({
@@ -48,6 +48,6 @@ export class BillingComponent implements OnInit {
   }
 
   navToDashboard = () => {
-    this.router.navigate(['mycollection']);
+    this.router.navigate(['myCollection']);
   };
 }

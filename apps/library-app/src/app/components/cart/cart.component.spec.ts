@@ -61,7 +61,7 @@ describe('CartComponent', () => {
 
     const bookData = service.getBookDetail();
 
-    expect(RouterSpy).toHaveBeenCalledWith(['/bookdetail']);
+    expect(RouterSpy).toHaveBeenCalledWith(['/bookDetail']);
     expect(bookData).toBe(book);
   });
   it('onRemoveCartItem() should remove cart items', async () => {
@@ -104,11 +104,8 @@ describe('CartComponent', () => {
     const cartItems = [{ id: 1 }, { id: 2 }];
     component.cartItems = cartItems;
     component.onProceedToBuy();
-
-    // booksFacade.addPurchasingBooks(cartItems);
     purchasingBooks = await readFirst(booksFacade.purchasingBooks$);
-    // expect(purchasingBooks.length).toBe(2);
-    expect(spy).toHaveBeenCalledWith(['/billingdetails'], {
+    expect(spy).toHaveBeenCalledWith(['/billingDetails'], {
       queryParams: { checkout: true }
     });
   });

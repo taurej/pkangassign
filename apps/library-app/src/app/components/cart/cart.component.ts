@@ -36,7 +36,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
   onProceedToBuy(){
     this.booksFacade.addPurchasingBooks(this.cartItems);
-    this.router.navigate(['/billingdetails'],{ queryParams: { checkout: true } })
+    this.router.navigate(['/billingDetails'],{ queryParams: { checkout: true } })
   }
   onIncrementQty(book: any){
     if(book.cartQty){
@@ -61,7 +61,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
   onBookDetails(book){
     this.sharedService.setBookDetail(book);
-    this.router.navigate(['/bookdetail'])
+    this.router.navigate(['/bookDetail'])
   }
   ngOnDestroy(){
     this.storeSubscription.unsubscribe();

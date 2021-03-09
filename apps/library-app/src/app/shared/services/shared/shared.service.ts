@@ -30,30 +30,16 @@ export class SharedService {
           }
         });
   }
-  // isStockAvailable(book){
-  //   if(book?.saleInfo?.saleability === 'FOR_SALE'){
-  //     return true;
-  //   }else{
-  //     return false;
-  //   }
-  // }
   onBuyNow(book){
-    //if(this.isStockAvailable(book)){
       this.booksFacade.addPurchasingBooks([book]);
-      this.router.navigate(['/billingdetails'],{ queryParams: { checkout: false } });
-    // }else{
-    //   this.openAlertDialog({message:"The Item is Out of Stock.\n You can't buy now."})
-    // }
+      this.router.navigate(['/billingDetails'],{ queryParams: { checkout: false } });
   }
   onAddToCart(book){
-   // if(this.isStockAvailable(book)){
       book.cartQty = 1;
       book.itemTotal = book.saleInfo?.retailPrice?.amount;
       this.booksFacade.addBookToCart(book);
       this.router.navigate(['/cart']);
-    // }else{
-    //   this.openAlertDialog({message:"The Item is Out of Stock.\n You can't add to cart now."})
-    // }
+
   }
   setBookDetail(book){
     this.bookData = book;

@@ -55,14 +55,6 @@ describe('SharedService', () => {
     service.setBookDetail(book);
     expect(service.getBookDetail()).toBe(book);
   });
-  // it('should return true on call of isStockAvailable() when book is "FOR_SALE"', () => {
-  //   const book = { saleInfo: { saleability: 'FOR_SALE' } };
-  //   expect(service.isStockAvailable(book)).toBe(true);
-  // });
-  // it('should return false on call of isStockAvailable() when book is NOT "FOR_SALE"', () => {
-  //   const book = { saleInfo: { saleability: 'NOT_FOR_SALE' } };
-  //   expect(service.isStockAvailable(book)).toBe(false);
-  // });
   it('onAddToCart() should ADD book to cart if stock available and navigate to cart page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     router = TestBed.inject(Router);
@@ -73,12 +65,7 @@ describe('SharedService', () => {
     expect(cartItems.length).toBe(1);
     expect(spy).toHaveBeenCalledWith(['/cart']);
   });
-  // it('onAddToCart() should open alert dialog if stock not available', () => {
-  //   const book = { saleInfo: { saleability: 'NOT_FOR_SALE' } };
-  //   const spy = spyOn(service, 'openAlertDialog');
-  //   service.onAddToCart(book);
-  //   expect(spy).toHaveBeenCalledTimes(1);
-  // });
+
   it('onBuyNow() should ADD book purchasingBooks in store if stock available and navigate to billing details page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     router = TestBed.inject(Router);
@@ -87,16 +74,10 @@ describe('SharedService', () => {
     service.onBuyNow(book);
     const purchasingBooks = await readFirst(booksFacade.purchasingBooks$);
     expect(purchasingBooks.length).toBe(1);
-    expect(spy).toHaveBeenCalledWith(['/billingdetails'], {
+    expect(spy).toHaveBeenCalledWith(['/billingDetails'], {
       queryParams: { checkout: false }
     });
   });
-  // it('onBuyNow() should open alert dialog if stock not available', () => {
-  //   const book = { saleInfo: { saleability: 'NOT_FOR_SALE' } };
-  //   const spy = spyOn(service, 'openAlertDialog');
-  //   service.onBuyNow(book);
-  //   expect(spy).toHaveBeenCalledTimes(1);
-  // });
   it('should open loading spinner if loading set to true', () => {
     service.loading = true;
   });

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmptyCartComponent } from './empty-cart.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
-import { MycollectionComponent } from '../mycollection/mycollection.component';
+import { MyCollectionComponent } from '../mycollection/mycollection.component';
 import { BillingComponent } from '../billing/billing.component';
 import { BookDetailComponent } from '../book-detail/book-detail.component';
 import { CartComponent } from '../cart/cart.component';
@@ -23,7 +23,7 @@ describe('EmptyCartComponent', () => {
       declarations: [
         EmptyCartComponent,
         DashboardComponent,
-        MycollectionComponent,
+        MyCollectionComponent,
         BillingComponent,
         BookDetailComponent,
         CartComponent

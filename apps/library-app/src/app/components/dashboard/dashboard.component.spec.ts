@@ -89,7 +89,7 @@ describe('DashboardComponent', () => {
 
     const bookData = service.getBookDetail();
 
-    expect(RouterSpy).toHaveBeenCalledWith(['/bookdetail']);
+    expect(RouterSpy).toHaveBeenCalledWith(['/bookDetail']);
     expect(bookData).toBe(book);
   });
 });
