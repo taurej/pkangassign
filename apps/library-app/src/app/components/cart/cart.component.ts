@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import {BooksFacade} from '../../store/app.facade';
 
 @Component({
-  selector: 'enlight-cart',
+  selector: 'enLight-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })

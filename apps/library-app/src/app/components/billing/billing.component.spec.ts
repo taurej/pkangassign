@@ -72,8 +72,8 @@ describe('BillingComponent', () => {
   it('onBillingSubmit() should set billing details in store and clear all cart if come from cart page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     const billingDetails = {
-      fname: 'fname',
-      address: 'asdf hno',
+      fname: 'fName',
+      address: 'gkp hno',
       mobile: '123456789',
       email: 'asd@gmail.com'
     };
@@ -94,8 +94,8 @@ describe('BillingComponent', () => {
   it('onBillingSubmit() should set billing details in store and not clear cart if come from dashboard page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     const billingDetails = {
-      fname: 'fname',
-      address: 'asdf hno',
+      fname: 'fName',
+      address: 'GKP hno',
       mobile: '123456789',
       email: 'asd@gmail.com'
     };

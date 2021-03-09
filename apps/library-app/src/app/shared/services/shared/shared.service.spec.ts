@@ -58,7 +58,7 @@ describe('SharedService', () => {
   it('onAddToCart() should ADD book to cart if stock available and navigate to cart page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     router = TestBed.inject(Router);
-    const book = { saleInfo: { saleability: 'FOR_SALE' } };
+    const book = {id: 1 };
     const spy = spyOn(router, 'navigate');
     service.onAddToCart(book);
     const cartItems = await readFirst(booksFacade.cartBooks$);

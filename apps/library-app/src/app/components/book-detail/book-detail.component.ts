@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared/services/shared/shared.service';
 
 @Component({
-  selector: 'enlight-book-detail',
+  selector: 'enLight-book-detail',
   templateUrl: './book-detail.component.html',
   styleUrls: ['./book-detail.component.scss']
 })
