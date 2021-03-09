@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import * as fromApp from '../../store/app.reducer';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -29,7 +30,7 @@ describe('SidenavComponent', () => {
       imports: [
         RouterModule.forRoot([]),
         HttpClientModule,
-        StoreModule.forRoot([]),
+        StoreModule.forRoot({ books: fromApp.appReducer }),
         BrowserAnimationsModule,
         MatDialogModule
       ]
