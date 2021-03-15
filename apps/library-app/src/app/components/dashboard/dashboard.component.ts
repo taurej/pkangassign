@@ -3,15 +3,16 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../shared/services/shared/shared.service';
 import { Subscription } from 'rxjs';
 import { BooksFacade } from '../../store/app.facade';
+import { Product } from '../../shared/models/product';
 
 @Component({
-  selector: 'enlight-dashboard',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   searchString: string;
-  books: any[];
+  books: Product[];
   storeSubscription: Subscription;
   errorSubscription: Subscription;
 
@@ -30,6 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     );
     this.errorSubscription = this.booksFacade.booksLoadedError$.subscribe(
       error => {
+        /* istanbul ignore if */
         if (error != null) {
           this.sharedService.loading = false;
           this.sharedService.openAlertDialog({ message: error });
@@ -39,22 +41,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
     );
   }
 
-  onSearchBooks(searchString: string) {
+  searchBooks(searchString: string) {
     if (searchString) {
       this.sharedService.loading = true;
       this.booksFacade.storeSearchStringInStore(searchString);
       this.booksFacade.loadSearchBooks(searchString);
     }
   }
-  onBuyNow(book) {
-    this.sharedService.onBuyNow(book);
+  buyNow(book) {
+    this.sharedService.buyNow(book);
   }
-  onAddToCart(book) {
-    this.sharedService.onAddToCart(book);
+  addToCart(book) {
+    this.sharedService.addToCart(book);
   }
-  onBookDetails(book) {
-    this.sharedService.setBookDetail(book);
-    this.router.navigate(['/bookDetail']);
+  bookDetails(book) {
+    //this.sharedService.setBookDetail(book);
+    this.router.navigate(['/bookDetail/',book.id]);
   }
   ngOnDestroy() {
     this.storeSubscription.unsubscribe();

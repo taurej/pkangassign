@@ -8,7 +8,6 @@ import * as appActions from './app.actions';
   providedIn: 'root'
 })
 export class BooksFacade {
-  //list of selectors
   booksLoaded$ = this.store.select(appSelectors.getBooksLoaded);
   booksLoadedError$ = this.store.select(appSelectors.getEffectsError);
   cartBooks$ = this.store.select(appSelectors.getCartBooks);
@@ -19,8 +18,6 @@ export class BooksFacade {
   billingDetails$ = this.store.select(appSelectors.getBillingDetails);
 
   constructor(private store: Store<fromApp.State>) {}
-
-  //methods for dispatching actions
   removeAllCartItems() {
     this.store.dispatch(new appActions.RemoveAllCartItems());
   }
@@ -53,9 +50,11 @@ export class BooksFacade {
       new appActions.GetBooks({ searchString: searchString })
     );
   }
+  /* istanbul ignore next */
   SetEffectsError(error) {
     return new appActions.SetEffectsError({ error: error });
   }
+  /* istanbul ignore next */
   ClearEffectsError() {
     this.store.dispatch(new appActions.ClearEffectsError());
   }

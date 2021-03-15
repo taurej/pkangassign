@@ -11,22 +11,25 @@
   <button
     name="search-btn"
     mat-icon-button
-    (click)="onSearchBooks(searchString)"
+    (click)="searchBooks(searchString)"
   >
     <mat-icon>search</mat-icon>
   </button>
 </form>
-<div class="box_row">   
+<!-- <div class="box_row">   
   <div class="box_column" *ngFor="let book of books; let index = index">
-    <div class="inner_box" (click)="onBookDetails(book)">
+    <div class="inner_box" (click)="bookDetails(book)">
       <b>{{ book?.volumeInfo?.title }}</b>
       <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
       }} || ../../../assets/images/book-cover-not-available.jpg" alt="{{ book?.volumeInfo?.title }}">
-      <p>  Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.  </p>
+     <p>{{ book?.volumeInfo?.description }}</p>
       <h5> <b> Written by:</b></h5>
        <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
     </div>
-  </div>
+  </div> 
+</div> -->
+<div class="box_row">  
+  <app-book  [books]=books></app-book>
 </div>
 <div  class="empty-collection-hldr"  *ngIf="books.length == 0 && (booksFacade.searchString$ | async).length > 0">
   <img src="../../../assets/images/No_results_found.png" />

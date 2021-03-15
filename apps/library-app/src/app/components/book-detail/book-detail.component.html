@@ -4,7 +4,7 @@
       <b>{{ book?.volumeInfo?.title }}</b>
       <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
       }} || ../../../assets/images/book-cover-not-available.jpg" alt="{{ book?.volumeInfo?.title }}"><br/>
-      <h6 *ngIf="book?.volumeInfo?.averageRating">Rating: <span><enlight-star-rating [rating]="book.volumeInfo.averageRating"></enlight-star-rating></span></h6>
+      <h6 *ngIf="book?.volumeInfo?.averageRating">Rating: <span><app-star-rating [rating]="book.volumeInfo.averageRating"></app-star-rating></span></h6>
       <h6 *ngIf="book?.volumeInfo?.publisher">Publisher: <span>{{book?.volumeInfo?.publisher}}</span></h6>
       <h6 *ngIf="book?.volumeInfo?.pageCount">Page Count: <span>{{book?.volumeInfo?.pageCount}}</span></h6>
       <h6 *ngIf="book?.volumeInfo?.language">Language: <span>{{book?.volumeInfo?.language}}</span></h6>
@@ -12,13 +12,14 @@
       <h5> <b> Written by:</b></h5>
        <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
        <div class="button_bottom">
-         <button class="btn buynow" mat-button (click)="onBuyNow(book)">
+         <button class="btn buynow" mat-button (click)="buyNow(book)">
           Buy Now
         </button>
-        <button class="btn addtocart" mat-button (click)="onAddToCart(book)">
+        <button class="btn addtocart" mat-button (click)="addToCart(book)">
           Add To Cart
         </button>
       </div>
     </div>
   </div> 
 </div>
+

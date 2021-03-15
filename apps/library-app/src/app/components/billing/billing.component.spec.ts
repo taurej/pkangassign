@@ -84,14 +84,14 @@ describe('BillingComponent', () => {
 
     component.checkout = 'true';
     component.billingDetails = billingDetails;
-    component.onBillingSubmit();
+    component.billingSubmit();
 
     const billingData = await readFirst(booksFacade.billingDetails$);
     cartItems = await readFirst(booksFacade.cartBooks$);
     expect(billingData).toBe(billingDetails);
     expect(cartItems.length).toBe(0);
   });
-  it('onBillingSubmit() should set billing details in store and not clear cart if come from dashboard page', async () => {
+  it('billingSubmit() should set billing details in store and not clear cart if come from dashboard page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     const billingDetails = {
       fname: 'fName',
@@ -106,7 +106,7 @@ describe('BillingComponent', () => {
 
     component.checkout = 'false';
     component.billingDetails = billingDetails;
-    component.onBillingSubmit();
+    component.billingSubmit();
 
     const billingData = await readFirst(booksFacade.billingDetails$);
     cartItems = await readFirst(booksFacade.cartBooks$);

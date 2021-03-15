@@ -24,17 +24,18 @@ export class SharedService {
           width: '350px',
           data: data
         });
+        /* istanbul ignore next */
         dialogRef.afterClosed().subscribe(result => {
           if(data.onCloseHandler){
             data.onCloseHandler();
           }
         });
   }
-  onBuyNow(book){
+  buyNow(book){
       this.booksFacade.addPurchasingBooks([book]);
       this.router.navigate(['/billingDetails'],{ queryParams: { checkout: false } });
   }
-  onAddToCart(book){
+  addToCart(book){
       book.cartQty = 1;
       book.itemTotal = book.saleInfo?.retailPrice?.amount;
       this.booksFacade.addBookToCart(book);
@@ -49,6 +50,7 @@ export class SharedService {
   }
   set loading(display){
     const loadingElement: HTMLElement = document.getElementById('overlay');
+    /* istanbul ignore next */
       if(display && loadingElement){
         loadingElement.style.display = 'block';
       }else if(loadingElement){

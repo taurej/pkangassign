@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import {BooksFacade} from '../../store/app.facade';
 
 @Component({
-  selector: 'enLight-cart',
+  selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
@@ -15,7 +15,9 @@ export class CartComponent implements OnInit, OnDestroy {
   totalItems = 0;
   totalPrice = 0;
   storeSubscription: Subscription;
-
+  page:string;
+  cartCountSubscription: Subscription;
+  cartBookCount:number;
   constructor(
     private router: Router,
     private sharedService: SharedService,
@@ -26,7 +28,14 @@ export class CartComponent implements OnInit, OnDestroy {
     this.storeSubscription = this.booksFacade.cartBooks$.subscribe((cartBooks)=>{
       this.cartItems = JSON.parse(JSON.stringify(cartBooks));
       this.calculateOrderSummary();
-    })
+    });
+    this.page = 'cart';
+    this.cartCountSubscription = this.booksFacade.itemsCount$.subscribe(
+      countCartBooks => {
+        let bookCount = JSON.parse(JSON.stringify(countCartBooks));
+        this.cartBookCount = bookCount.cartCount;
+      }
+    );
   }
   calculateOrderSummary(){
     this.cartItems.map((item)=>{
@@ -34,37 +43,22 @@ export class CartComponent implements OnInit, OnDestroy {
       this.totalPrice = this.totalPrice + item.itemTotal;
   })
   }
-  onProceedToBuy(){
+  proceedToBuy(){
     this.booksFacade.addPurchasingBooks(this.cartItems);
     this.router.navigate(['/billingDetails'],{ queryParams: { checkout: true } })
   }
-  onIncrementQty(book: any){
-    if(book.cartQty){
-      book.cartQty++;
-      book.itemTotal = book.itemTotal + book.saleInfo?.retailPrice?.amount;
-      this.totalItems++;
-      this.totalPrice = this.totalPrice + book.saleInfo?.retailPrice?.amount;
-    }
-  }
-  onDecrementQty(book: any ){
-    if(book.cartQty > 1){
-      book.cartQty--;
-      book.itemTotal = book.itemTotal - book.saleInfo?.retailPrice?.amount;
-      this.totalItems--;
-      this.totalPrice = this.totalPrice - book.saleInfo?.retailPrice?.amount;
-    }
-  }
-  onRemoveCartItem(book:any){
+  removeCartItem(book:any){
     this.totalItems = 0;
     this.totalPrice = 0;
     this.booksFacade.removeCartItem(book);
   }
-  onBookDetails(book){
-    this.sharedService.setBookDetail(book);
-    this.router.navigate(['/bookDetail'])
+  bookDetails(book){
+    //this.sharedService.setBookDetail(book);
+    this.router.navigate(['/bookDetail', book.id])
   }
   ngOnDestroy(){
     this.storeSubscription.unsubscribe();
+    this.cartCountSubscription.unsubscribe();
   }
 
 }

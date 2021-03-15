@@ -55,14 +55,14 @@ describe('MyCollectionComponent', () => {
     component.goToDashboard();
     expect(spy).toHaveBeenCalledWith(['dashboard']);
   });
-  it('should set selected Book in sharedService on click of onBookDetails(book) and navigate to book details page', () => {
+  it('should set selected Book in sharedService on click of bookDetails(book) and navigate to book details page', () => {
     const book = { id: 1 };
     const router: Router = TestBed.inject(Router);
     service = TestBed.inject(SharedService);
     const spy = spyOn(router, 'navigate');
-    component.onBookDetails(book);
+    component.bookDetails(book);
     const bookData = service.getBookDetail();
-    expect(spy).toHaveBeenCalledWith(['/bookDetail']);
+    expect(spy).toHaveBeenCalledWith(['/bookDetail',book.id]);
     expect(bookData).toBe(book);
   });
 });

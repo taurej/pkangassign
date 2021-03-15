@@ -36,7 +36,7 @@
       "projectType": "application",
       "root": "apps/library-app",
       "sourceRoot": "apps/library-app/src",
-      "prefix": "tmo-onboard",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

@@ -1,13 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'enlight-star-rating',
+  selector: 'app-star-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent implements OnInit {
-  constructor() {}
-
   @Input() rating: any;
   finalStars: any = [];
 

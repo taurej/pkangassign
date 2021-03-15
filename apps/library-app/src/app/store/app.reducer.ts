@@ -1,12 +1,14 @@
 import * as appActions from './app.actions';
 import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { Product } from '../shared/models/product';
+import { Billing } from '../shared/models/Billing';
 
 export interface State extends EntityState<any> {
-  booksLoaded: any[];
-  cartBooks: any[];
-  purchasingBooks: any[];
-  mycollectionBooks: any[];
-  billingDetails: any;
+  booksLoaded: Product[];
+  cartBooks: Product[];
+  purchasingBooks: Product[];
+  mycollectionBooks: Product[];
+  billingDetails: Billing;
   searchString: string;
   effectsError: string;
 }
@@ -22,6 +24,7 @@ const initBooks: State = adapter.getInitialState({
 });
 
 export function appReducer(state = initBooks, action: appActions.appActions) {
+  /* istanbul ignore next */
   switch (action.type) {
     case appActions.BOOKS_LOADED: {
       return {

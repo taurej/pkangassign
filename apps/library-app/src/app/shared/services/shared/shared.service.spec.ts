@@ -15,12 +15,13 @@ import { AlertDialogComponent } from '../../components/alert-dialog/alert-dialog
 import * as fromApp from '../../../store/app.reducer';
 import { BooksFacade } from '../../../store/app.facade';
 import { readFirst } from '@nrwl/angular/testing';
+import { By } from '@angular/platform-browser';
 
 describe('SharedService', () => {
   let service: SharedService;
   let booksFacade: BooksFacade;
   let router: Router;
-
+  let el: HTMLElement;
   beforeEach(() => {
     @NgModule({
       declarations: [AlertDialogComponent],
@@ -60,18 +61,18 @@ describe('SharedService', () => {
     router = TestBed.inject(Router);
     const book = {id: 1 };
     const spy = spyOn(router, 'navigate');
-    service.onAddToCart(book);
+    service.addToCart(book);
     const cartItems = await readFirst(booksFacade.cartBooks$);
     expect(cartItems.length).toBe(1);
     expect(spy).toHaveBeenCalledWith(['/cart']);
   });
 
-  it('onBuyNow() should ADD book purchasingBooks in store if stock available and navigate to billing details page', async () => {
+  it('buyNow() should ADD book purchasingBooks in store if stock available and navigate to billing details page', async () => {
     booksFacade = TestBed.inject(BooksFacade);
     router = TestBed.inject(Router);
     const book = { saleInfo: { saleability: 'FOR_SALE' } };
     const spy = spyOn(router, 'navigate');
-    service.onBuyNow(book);
+    service.buyNow(book);
     const purchasingBooks = await readFirst(booksFacade.purchasingBooks$);
     expect(purchasingBooks.length).toBe(1);
     expect(spy).toHaveBeenCalledWith(['/billingDetails'], {
@@ -84,4 +85,5 @@ describe('SharedService', () => {
   it('should hide loading spinner if loading set to false', () => {
     service.loading = false;
   });
+  
 });

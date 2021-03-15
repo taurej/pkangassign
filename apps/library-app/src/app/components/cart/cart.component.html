@@ -1,91 +1,5 @@
-<!-- <div class="cart-hldr" *ngIf="cartItems.length > 0; else emptyCart">
-  <div class="cart-items-hldr">
-    <mat-card
-      class="cart-item"
-      *ngFor="let book of cartItems; let index = index"
-    >
-      <div class="book-cover">
-        <img
-          (click)="onBookDetails(book)"
-          src="{{
-            book?.volumeInfo?.imageLinks?.smallThumbnail
-          }} || ../../../assets/images/book-cover-not-available.jpg"
-        />
-      </div>
-      <div class="book-detail">
-        <div class="book-title">{{ book?.volumeInfo?.title }}</div>
-        <div class="book-subtitle">{{ book?.volumeInfo?.subtitle }}</div>
-        <div class="book-author">
-          Author(s) : {{ book?.volumeInfo?.authors?.join(', ') }}
-        </div>
-        <enlight-star-rating [rating]="3.5"></enlight-star-rating>
-      </div>
-      <div class="qty-stepper-hldr">
-        <div class="qty-stepper">
-          <mat-icon
-            class="qty-item stepper-border"
-            (click)="onDecrementQty(book)"
-            >remove</mat-icon
-          >
-          <input
-            class="qty-item qty-input"
-            disabled
-            [(ngModel)]="book.cartQty"
-            type="text"
-          />
-          <mat-icon
-            class="qty-item stepper-border"
-            (click)="onIncrementQty(book)"
-            >add</mat-icon
-          >
-          <span class="qty-unit">Qty</span>
-        </div>
-        <div class="qty-total">Item Total:</div>
-        <div class="book-price">{{ book?.itemTotal | currency: 'INR' }}</div>
-      </div>
-      <div class="close-btn">
-        <button
-          mat-icon-button
-          (click)="onRemoveCartItem(book)"
-          aria-label="remove item from cart"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-    </mat-card>
-  </div>
-  <div class="order-summary">
-    <mat-card>
-      <mat-card-header class="card-header">
-        <mat-card-title>Order Summary</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <table>
-          <tr>
-            <td>Books Qty</td>
-            <td>{{ totalItems }} (items)</td>
-          </tr>
-          <tr>
-            <td>Estimated Tax</td>
-            <td>{{ 10 | currency: 'INR' }}</td>
-          </tr>
-          <tr>
-            <td>Estimated Total</td>
-            <td>{{ totalPrice + 10 | currency: 'INR' }}</td>
-          </tr>
-        </table>
-      </mat-card-content>
-      <mat-card-actions align="center">
-        <button mat-button class="checkout-btn" (click)="onProceedToBuy()">
-          PROCEED TO BUY
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div> -->
-
-<div class="box_row" *ngIf="cartItems.length > 0; else emptyCart">   
-  <div class="box_column" *ngFor="let book of cartItems; let index = index">
+<div class="box_row" *ngIf="cartBookCount > 0; else emptyCart">   
+  <!-- <div class="box_column" *ngFor="let book of cartItems; let index = index">
     <div class="inner_box">
       <b>{{ book?.volumeInfo?.title }}</b>
       <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
@@ -94,16 +8,23 @@
       <p>  Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator. Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.  </p>
       <h5> <b> Written by:</b></h5>
        <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
-       <mat-icon class="qty-item stepper-border" (click)="onRemoveCartItem(book)">remove</mat-icon>
+       <mat-icon class="qty-item stepper-border" (click)="removeCartItem(book)">remove</mat-icon>
     </div>
   </div> 
   <div class="btn-proceed">
-    <button mat-button class="checkout-btn" (click)="onProceedToBuy()">
+    <button mat-button class="checkout-btn" (click)="proceedToBuy()">
       PROCEED TO PURCHAGE
     </button>
-  </div>
+  </div> -->
+  <app-book  [books]=cartItems [page]="page" (bookData)='removeCartItem($event)'>
+    <div class="btn-proceed">
+      <button mat-button class="checkout-btn" (click)="proceedToBuy()">
+        PROCEED TO PURCHAGE
+      </button>
+    </div>
+  </app-book>
 </div>
 
 <ng-template #emptyCart>
-  <enlight-empty-cart></enlight-empty-cart>
+  <app-empty-cart></app-empty-cart>
 </ng-template>

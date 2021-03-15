@@ -11,7 +11,7 @@ export interface BillingData {
 }
 
 @Component({
-  selector: 'enlight-billing-detail',
+  selector: 'app-billing-detail',
   templateUrl: './billing.component.html',
   styleUrls: ['./billing.component.scss']
 })
@@ -36,7 +36,7 @@ export class BillingComponent implements OnInit {
     this.checkout = this.activatedRoute.snapshot.queryParams['checkout'];
   }
 
-  onBillingSubmit() {
+  billingSubmit() {
     if (this.checkout === 'true') {
       this.booksFacade.removeAllCartItems();
     }

@@ -1,6 +1,6 @@
 
-<div class="box_row"  *ngIf="myBooksCollection.length > 0; else emptyCollection">   
-  <div class="box_column" *ngFor="let book of myBooksCollection; let index = index">
+<div class="box_row"  *ngIf="collectionBooks > 0; else emptyCollection">   
+  <!-- <div class="box_column" *ngFor="let book of myBooksCollection; let index = index">
     <div class="inner_box">
       <b>{{ book?.volumeInfo?.title }}</b>
       <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
@@ -10,7 +10,8 @@
       <h5> <b> Written by:</b></h5>
        <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
     </div>
-  </div> 
+  </div>  -->
+  <app-book  [books]=myBooksCollection></app-book>
   <div class="billing-details">
     <h5>Billing Address</h5>
     <h5>Name: <span>{{billingDetails.fname}}</span></h5>
@@ -21,18 +22,11 @@
 </div>
 <ng-template #emptyCollection>
   <div class="empty-collection-hldr">
-    <img
-      (click)="goToDashboard()"
-      src="../../../assets/images/book_sans_add-512.png"
-    />
+    <img (click)="goToDashboard()" src="../../../assets/images/book_sans_add-512.png" />
     <div>Collection is Empty.</div>
     <div class="message">
       Click
-      <span
-        style="color: blue;text-decoration: underline;cursor: pointer;"
-        (click)="goToDashboard()"
-        >here</span
-      >
+      <span style="color: blue;text-decoration: underline;cursor: pointer;" (click)="goToDashboard()">here</span>
       to continue shopping
     </div>
   </div>

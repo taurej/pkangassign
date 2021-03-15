@@ -53,49 +53,26 @@ describe('CartComponent', () => {
   });
   it('onBookDetails() should set bookData in sharedService and navigate to book detail page', () => {
     const book = { id: 1 };
-    service = TestBed.inject(SharedService);
+   // service = TestBed.inject(SharedService);
     router = TestBed.inject(Router);
     const RouterSpy = spyOn(router, 'navigate');
-
-    component.onBookDetails(book);
-
-    const bookData = service.getBookDetail();
-
-    expect(RouterSpy).toHaveBeenCalledWith(['/bookDetail']);
-    expect(bookData).toBe(book);
+    component.bookDetails(book);
+    //const bookData = service.getBookDetail();
+    expect(RouterSpy).toHaveBeenCalledWith(['/bookDetail',book.id]);
+    //expect(bookData).toBe(book);
   });
-  it('onRemoveCartItem() should remove cart items', async () => {
+  it('removeCartItem() should remove cart items', async () => {
     const book = { id: 1 };
     booksFacade = TestBed.inject(BooksFacade);
     booksFacade.addBookToCart(book);
     let cartItems = await readFirst(booksFacade.cartBooks$);
     expect(cartItems.length).toBe(1);
-
-    component.onRemoveCartItem(book);
+    component.removeCartItem(book);
     cartItems = await readFirst(booksFacade.cartBooks$);
     expect(cartItems.length).toBe(0);
   });
-  it('onIncrementQty() should increment qty number by one', () => {
-    const book = { id: 1, cartQty: 1 };
-    component.onIncrementQty(book);
-    expect(book.cartQty).toBe(2);
-  });
-  it('onIncrementQty() should not increment qty number by one if cartQty<1', () => {
-    const book = { id: 1, cartQty: 0 };
-    component.onIncrementQty(book);
-    expect(book.cartQty).toBe(0);
-  });
-  it('onDecrementQty() should decrement qty number by one if cartQty>1', () => {
-    const book = { id: 1, cartQty: 2 };
-    component.onDecrementQty(book);
-    expect(book.cartQty).toBe(1);
-  });
-  it('onDecrementQty() should not decrement qty number by one if cartQty = 1', () => {
-    const book = { id: 1, cartQty: 1 };
-    component.onDecrementQty(book);
-    expect(book.cartQty).toBe(1);
-  });
-  it('onProceedToBuy() should add books to store > purchasingBooks array and navigate to billing detail page', async () => {
+  
+  it('proceedToBuy() should add books to store > purchasingBooks array and navigate to billing detail page', async () => {
     let purchasingBooks = await readFirst(booksFacade.purchasingBooks$);
     router = TestBed.inject(Router);
     const spy = spyOn(router, 'navigate');
@@ -103,7 +80,7 @@ describe('CartComponent', () => {
 
     const cartItems = [{ id: 1 }, { id: 2 }];
     component.cartItems = cartItems;
-    component.onProceedToBuy();
+    component.proceedToBuy();
     purchasingBooks = await readFirst(booksFacade.purchasingBooks$);
     expect(spy).toHaveBeenCalledWith(['/billingDetails'], {
       queryParams: { checkout: true }

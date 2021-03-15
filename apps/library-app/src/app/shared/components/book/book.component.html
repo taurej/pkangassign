@@ -1,0 +1,14 @@
+<div class="row_elem">
+    <div class="box_column" *ngFor="let book of books; let index = index">
+        <div class="inner_box" (click)="bookDetails(book)">
+            <b>{{ book?.volumeInfo?.title }}</b>
+            <img src="{{book?.volumeInfo?.imageLinks?.smallThumbnail
+            }} || ../../../assets/images/book-cover-not-available.jpg" alt="{{ book?.volumeInfo?.title }}">
+            <p>{{ book?.volumeInfo?.description }}</p>
+            <h5> <b> Written by:</b></h5>
+            <p>{{ book?.volumeInfo?.authors?.join(', ') }}</p>
+            <mat-icon *ngIf="page=='cart'" class="qty-item stepper-border" (click)="removeCartItem(book)">remove</mat-icon>
+        </div>
+    </div>
+    <ng-content></ng-content>
+</div>

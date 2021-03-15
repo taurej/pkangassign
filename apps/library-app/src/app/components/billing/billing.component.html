@@ -1,23 +1,17 @@
 <mat-card class="billing-hldr">
   <h3>Billing Details:</h3>
-  <form
-    class="billing-form"
-    name="billing-form"
-    #f="ngForm"
-    (ngSubmit)="f.form.valid && onBillingSubmit()"
-  >
-  
-      <mat-form-field appearance="fill" style="width: 100%;float: left;">       
-        <input
-          #firstName="ngModel"
-          name="fname"
-          maxlength="30"
-          matInput
-          placeholder="Your Name"
-          [(ngModel)]="billingDetails.fname"
-          required
-        />
-      </mat-form-field>
+  <form class="billing-form" name="billing-form" #f="ngForm" (ngSubmit)="f.form.valid && billingSubmit()">
+    <mat-form-field appearance="fill" style="width: 100%;float: left;">       
+      <input
+        #firstName="ngModel"
+        name="fname"
+        maxlength="30"
+        matInput
+        placeholder="Your Name"
+        [(ngModel)]="billingDetails.fname"
+        required
+      />
+    </mat-form-field>
     <mat-form-field appearance="fill" style="width: 100%;float: left;">
       <input
         #email="ngModel"

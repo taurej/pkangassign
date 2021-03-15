@@ -11,7 +11,7 @@ export const appRoutes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'myCollection', component: MyCollectionComponent },
   { path: 'billingDetails', component: BillingComponent },
-  { path: 'bookDetail', component: BookDetailComponent },
+  { path: 'bookDetail/:id', component: BookDetailComponent },
   { path: '**', redirectTo: 'dashboard' }
 ];
 

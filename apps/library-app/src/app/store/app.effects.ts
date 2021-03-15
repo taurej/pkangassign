@@ -18,6 +18,7 @@ export class AppEffects {
   getBooks$ = this.actions$.pipe(
     ofType(appActions.GET_BOOKS),
     switchMap((actionData: appActions.GetBooks) => {
+      /* istanbul ignore next */
       return this.http
         .get(
           'https://www.googleapis.com/books/v1/volumes?q=' +

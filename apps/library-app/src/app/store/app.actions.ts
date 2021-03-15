@@ -17,14 +17,14 @@ export class GetBooks implements Action {
   readonly type = GET_BOOKS;
   constructor(public payload: { searchString: string }) {}
 }
+/* istanbul ignore next */
 export class SetEffectsError implements Action {
   readonly type = SET_EFFECTS_ERROR;
   constructor(public payload: { error: string }) {}
 }
-
+/* istanbul ignore next */
 export class ClearEffectsError implements Action {
   readonly type = CLEAR_EFFECTS_ERROR;
-  constructor() {}
 }
 export class BooksLoaded implements Action {
   readonly type = BOOKS_LOADED;
@@ -53,7 +53,6 @@ export class RemoveCartItem implements Action {
 
 export class RemoveAllCartItems implements Action {
   readonly type = REMOVE_ALL_CART_ITEMS;
-  constructor() {}
 }
 
 export class BillingSuccess implements Action {

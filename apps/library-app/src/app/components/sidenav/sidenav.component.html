@@ -21,9 +21,7 @@
         <p class="link-outer">
           <a mat-list-item routerLink="/cart" (click)="snav.toggle()"
             ><mat-icon
-              matBadge="{{
-                (booksFacade.itemsCount$ | async)?.cartCount || '0'
-              }}"
+              matBadge="{{(booksFacade.itemsCount$ | async)?.cartCount || '0'}}"
               matBadgeColor="accent"
               class="sidenav-link"
               aria-hidden="false"

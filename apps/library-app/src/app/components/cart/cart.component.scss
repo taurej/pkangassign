@@ -91,12 +91,12 @@ mat-card-content table {
   padding: 3px;
 }
 
-.box_row{
-  display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--ms-flex-wrap: wrap;
-flex-wrap: wrap;
+.row_elem{
+  display: -webkit-box !important;
+display: -ms-flexbox !important;
+display: flex !important;
+-ms-flex-wrap: wrap !important;
+flex-wrap: wrap !important;
 }
 
 .box_column{

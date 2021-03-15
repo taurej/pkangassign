@@ -1,5 +1,5 @@
 {
-  "npmScope": "tmo-onboard",
+  "npmScope": "app",
   "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "angular.json": "*",
